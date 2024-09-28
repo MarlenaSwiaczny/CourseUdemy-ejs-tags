@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS Tags</title>
+</head>
+
+<body>
+  <h1>
+    <%# komentarz %>
+    <%# tak wkładamy wartości (musimy je mieć przekazane z pliku index.js w formacie {klucz:wartość}) %>
+    <%= title %>
+  </h1>
+  <p>Current second:
+    <%= seconds %>
+  </p>
+  <%# kawałki kodu js %>
+  <%# if (locals.fruits) { --> zapobiega wysypaniu się strony, gdy dane nie zostaną poprawnie przesłane %>
+  <% if (locals) { %>
+    <% if (seconds % 2===0) { %>
+  <ul>
+    <% items.forEach(element => { %>
+      <li>
+        <%= element %>
+      </li>
+    <% }); %>
+    
+  </ul>
+  <% } else { %>
+  <p>No items to display</p>
+  <% }; %>
+  <% } %>
+  <p>
+    <%# fragmenty HTMLa %>
+    <%- htmlContent %>
+  </p>
+  <%# dodany cały inny plik ejs %>
+  <%- include("footer.ejs") %>
+</body>
+
+</html>
